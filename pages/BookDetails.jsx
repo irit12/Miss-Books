@@ -32,9 +32,9 @@ export function BookDetails() {
     return (
         <section className="book-details">
             <h1>Book Id: {book.id}</h1>
-            <h1>Car Title: {book.title}</h1>
+            <h1>Book Title: {book.title}</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto omnis?</p>
-            <img src={`../assets/img/${book.title}.png`} alt="book-image" />
+            <img src={book.thumbnail} alt="book-image" />
             <button onClick={onBack}>Back</button>
             <section>
                 <button><Link to={`/book/${book.prevBookId}`}>Prev Book</Link></button>

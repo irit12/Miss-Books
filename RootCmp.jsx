@@ -5,6 +5,7 @@
 //import { Team } from "./cmps/AboutCmps/Team.jsx"
 //import { Vision } from "./cmps/AboutCmps/Vision.jsx"
 import { AppHeader } from "./cmps/AppHeader.jsx"
+import { BookDetails } from "./pages/bookDetails.jsx"
 // import { NotFound } from "./cmps/NotFound.jsx"
 // import { About } from "./pages/About.jsx"
 // import { BookDetails } from "./pages/BookDetails.jsx"
@@ -25,6 +26,7 @@ export function RootCmp() {
                         {/* <Route path="/" element={<Navigate to="/home" />} /> */}
                         <Route path="/" element={<Home />} />
                         <Route path="/book" element={<BookIndex />} />
+                        <Route path="/book/:bookId" element={<BookDetails />} />
                     </Routes>
                 </main>
             </section>

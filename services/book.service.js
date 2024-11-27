@@ -14,7 +14,7 @@ export const bookService = {
 }
 
 // For Debug (easy access from console):
-// window.cs = carService
+window.bs = bookService
 
 function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)

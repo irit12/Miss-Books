@@ -21,6 +21,7 @@ export function BookEdit() {
                 console.log('Problem getting book', err);
             })
     }
+    console.log(bookToEdit);
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -47,18 +48,18 @@ export function BookEdit() {
     }
 
 
-    const { vendor, speed } = carToEdit
+    // const { vendor, speed } = bookToEdit
     return (
-        <section className="car-edit">
-            <h1>{carId ? 'Edit' : 'Add'} Car</h1>
-            <form onSubmit={onSaveCar}>
+        <section className="book-edit">
+            <h1>{bookId ? 'Edit' : 'Add'} Book</h1>
+            {/* <form onSubmit={onSaveBook}>
                 <label htmlFor="vendor">Vendor</label>
                 <input onChange={handleChange} value={vendor} type="text" name="vendor" id="vendor" />
 
                 <label htmlFor="speed">Speed</label>
                 <input onChange={handleChange} value={speed} type="number" name="speed" id="speed" />
                 <button>Save</button>
-            </form>
+            </form> */}
         </section>
     )
 

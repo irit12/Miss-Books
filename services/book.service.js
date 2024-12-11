@@ -52,6 +52,18 @@ function getEmptyBook() {
   return {
     id: '',
     title: '',
+    subtitle: '',
+    authors: '',
+    publishedDate: '',
+    description:'',
+    pageCount: '',
+    categories: '',
+    thumbnail: '',
+    language: '',
+    listPrice: {amount: '', currencyCode: '', isOnSale: ''},
+    //amount: '',
+    //currencyCode: '',
+    //isOnSale: ''
   }
 }
 
@@ -504,17 +516,16 @@ function _createBooks() {
         }
       }
     ]
-    // const titles = ['tintin', 'asterix', 'paddington', 'aang']
-    // for (let i = 0; i < 6; i++) {
-    //     const title = titles[utilService.getRandomIntInclusive(0, title.length - 1)]
-    //     books.push(_createBook(title, utilService.getRandomIntInclusive(80, 300)))
-    // }
+    
     utilService.saveToStorage(BOOK_KEY, books)
   }
 }
 
-function _createBook(id, title) {
-  const book = getEmptyBook(id, title)
+function _createBook(id, title, subtitle, authors, publishedDate, description, pageCount, categories, thumbnail,
+  language, listPrice
+ ) {
+  const book = getEmptyBook(id, title, subtitle, authors, publishedDate, description, pageCount, categories, thumbnail,
+    language, listPrice)
   book.id = utilService.makeId()
   return book
 }

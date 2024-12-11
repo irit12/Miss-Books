@@ -21,12 +21,13 @@ function query(filterBy = {}) {
     .then(books => {
       if (filterBy.txt) {
         const regExp = new RegExp(filterBy.txt, 'i')
-        books = books.filter(book => regExp.test(book.id))
+        books = books.filter(book => regExp.test(book.title))
       }
-
-      //  if (filterBy.minSpeed) {
-      //     cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
-      // }
+      if (filterBy.minPrice) {
+        console.log(filterBy.minPrice);
+        
+        books = books.filter(book => filterBy.minPrice < book.listPrice.amount)
+      }
 
       return books
     })
@@ -55,20 +56,17 @@ function getEmptyBook() {
     subtitle: '',
     authors: '',
     publishedDate: '',
-    description:'',
+    description: '',
     pageCount: '',
     categories: '',
     thumbnail: '',
     language: '',
-    listPrice: {amount: '', currencyCode: '', isOnSale: ''},
-    //amount: '',
-    //currencyCode: '',
-    //isOnSale: ''
+    listPrice: { amount: '', currencyCode: '', isOnSale: '' },
   }
 }
 
 function getDefaultFilter(filterBy = { txt: '' }) {
-  return { txt: filterBy.txt }
+  return { txt: filterBy.txt, minPrice: 0 }
 }
 
 function _createBooks() {
@@ -516,14 +514,14 @@ function _createBooks() {
         }
       }
     ]
-    
+
     utilService.saveToStorage(BOOK_KEY, books)
   }
 }
 
 function _createBook(id, title, subtitle, authors, publishedDate, description, pageCount, categories, thumbnail,
   language, listPrice
- ) {
+) {
   const book = getEmptyBook(id, title, subtitle, authors, publishedDate, description, pageCount, categories, thumbnail,
     language, listPrice)
   book.id = utilService.makeId()

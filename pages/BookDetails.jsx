@@ -33,7 +33,15 @@ export function BookDetails() {
         <section className="book-details">
             <h1>Book Id: {book.id}</h1>
             <h1>Book Title: {book.title}</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto omnis?</p>
+            <h1>Book Subtitle: {book.subtitle}</h1>
+            <h1>Book Author: {book.authors}</h1>
+            <h1>Book Published Date: {book.publishedDate}</h1>
+            <h1>Book Description: {book.description}</h1>
+            <h1>Book Page Count: {book.pageCount}</h1>
+            <h1>Book Categories: {book.categories}</h1>
+            <h1>Book Language: {book.language}</h1>
+            <h1>Book Price: {book.listPrice.amount} {book.listPrice.currencyCode}</h1>
+            {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto omnis?</p> */}
             <img src={book.thumbnail} alt="book-image" />
             <button onClick={onBack}>Back</button>
             <section>

@@ -11,8 +11,8 @@ export function BookIndex() {
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
 
     console.log(filterBy);
-    
-    
+
+
     useEffect(() => {
         loadBooks()
     }, [filterBy])
@@ -39,11 +39,12 @@ export function BookIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
 
+
     if (!books) return <div>Loading...</div>
     return (
         <section className="book-index">
-            {<BookFilter defaultFilter={filterBy} onSetFilter={onSetFilter} /> }
-
+            {<BookFilter defaultFilter={filterBy} onSetFilter={onSetFilter} />}
+            
             <section>
                 <Link to="/book/edit">Add Book</Link>
             </section>

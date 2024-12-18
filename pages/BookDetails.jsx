@@ -1,4 +1,6 @@
+
 import { bookService } from "../services/book.service.js"
+import { LongTxt } from "../cmps/LongTxt.jsx";
 
 const { useEffect, useState } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -47,13 +49,13 @@ export function BookDetails() {
             <h1>Book Title: {book.title}</h1>
             <h1>Book Subtitle: {book.subtitle}</h1>
             <h1>Book Author: {book.authors}</h1>
-            <h1>Book Published Date: {book.publishedDate} {getBookAge()}</h1>
-            <h1>Book Description: {book.description}</h1>
+            <h1>Book Publish Year: {book.publishedDate} {getBookAge()}</h1>
+            <h1>Book Description: <LongTxt txt={book.description} /></h1>
             <h1>Book Page Count: {book.pageCount}, {getReadingStle()}</h1>
             <h1>Book Categories: {book.categories.map((categor, i) => i === book.categories.length - 1 ? categor : `${categor}, `)}</h1>
             <h1>Book Language: {book.language}</h1>
             <h1>Book Price: {book.listPrice.amount} {book.listPrice.currencyCode}</h1>
-            {book.listPrice.isOnSale && <h1>On Sale!!</h1>}
+            {book.listPrice.isOnSale && <h1> On Sale!!</h1>}
             {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto omnis?</p> */}
             <img src={book.thumbnail} alt="book-image" />
             <button onClick={onBack}>Back</button>

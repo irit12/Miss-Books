@@ -29,8 +29,8 @@ export function RootCmp() {
                             <Route path="/about/vision" element={<Vision />} />
                         <Route path="/book" element={<BookIndex />} />
                         <Route path="/book/:bookId" element={<BookDetails />} />
-                        <Route path="/book/:edit" element={<BookEdit />} />
-                        <Route path="/book/:edit/:bookId" element={<BookEdit />} />
+                        <Route path="/book/edit" element={<BookEdit />} />
+                        <Route path="/book/edit/:bookId" element={<BookEdit />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>

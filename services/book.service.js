@@ -24,20 +24,20 @@ function query(filterBy = {}) {
         books = books.filter(book => regExp.test(book.title))
       }
       if (filterBy.minPrice) {
-        console.log(filterBy.minPrice);
-        
         books = books.filter(book => filterBy.minPrice < book.listPrice.amount)
       }
-
+      if (filterBy.isOnSale) {
+        books = books.filter(book => book.listPrice.isOnSale)
+      }
       return books
     })
 }
 
 function get(bookId) {
-  return storageService.get(BOOK_KEY, bookId).then((bookFromStorage)=>{
+  return storageService.get(BOOK_KEY, bookId).then((bookFromStorage) => {
     return _setNextPrevBookId(bookFromStorage)
   })
-  
+
 }
 
 function remove(bookId) {
@@ -64,28 +64,32 @@ function getEmptyBook() {
     categories: '',
     thumbnail: '',
     language: '',
-    listPrice: { amount: '', currencyCode: '', isOnSale: '' },
+    listPrice: { amount: '', currencyCode: '$', isOnSale: false },
   }
 }
 
-function getDefaultFilter(filterBy = { txt: '' }) {
-  return { txt: filterBy.txt, minPrice: 0 }
+function getDefaultFilter() {
+  return {
+    txt: '',
+    minPrice: 0,
+    isOnSale: false
+  }
 }
 
 function _setNextPrevBookId(book) {
   console.log(book);
-  
+
   return query().then((books) => {
-      const bookIdx = books.findIndex((currBook) => currBook.id === book.id)
-      console.log(bookIdx);
-      
-      const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0]
-      const prevBook = books[bookIdx - 1] ? books[bookIdx - 1] : books[books.length - 1]
-      book.nextBookId = nextBook.id
-      book.prevBookId = prevBook.id
-      console.log(book);
-      
-      return book
+    const bookIdx = books.findIndex((currBook) => currBook.id === book.id)
+    console.log(bookIdx);
+
+    const nextBook = books[bookIdx + 1] ? books[bookIdx + 1] : books[0]
+    const prevBook = books[bookIdx - 1] ? books[bookIdx - 1] : books[books.length - 1]
+    book.nextBookId = nextBook.id
+    book.prevBookId = prevBook.id
+    console.log(book);
+
+    return book
   })
 }
 
